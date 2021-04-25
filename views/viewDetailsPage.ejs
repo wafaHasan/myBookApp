@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <%- include('./layout/header')%>
+
+    <main>
+        <h1>Hello World</h1>
+        <% console.log(data.length); %>
+            <h2>
+                <%= data.title%>
+            </h2>
+            <img src="<%= data.img%>" alt="">
+            <p>
+                <%= data.author%>
+            </p>
+            <p>
+                <%= data.isbn%>
+            </p>
+            <p>
+                <%= data.description%>
+            </p>
+
+            <button class="updateBtn"> Update</button>
+            <form class="updateForm" action="/update/<%= data.id%>?_method=put" method="POST">
+                <input type="text" name='title' value="<%= data.title%>">
+                <input type="text" name='img' value="<%= data.img%>">
+                <input type="text" name='author' value="<%= data.author%>">
+                <input type="text" name='isbn' value="<%= data.isbn%>">
+                <textarea type="hidden" name='description'><%= data.description%></textarea>
+                <button type="submit">Update</button>
+            </form>
+
+            <form action="/delete/<%= data.id%>?_method=delete" method="POST">
+                <button>Delete</button>
+
+            </form>
+
+
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="/app.js"></script>
+</body>
+
+</html>

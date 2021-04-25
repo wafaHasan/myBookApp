@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <%- include('./layout/header') %>
+
+
+        <main>
+            <h2>Books Data</h2>
+
+
+            <% data.forEach(function(it){ %>
+                <div class="border">
+                    <h2>
+                        <%= it.title%>
+                    </h2>
+                    <img src="<%= it.img%>" alt="">
+                    <p>
+                        <%= it.author%>
+                    </p>
+                    <p>
+                        <%= it.isbn%>
+                    </p>
+                    <p>
+                        <%= it.description%>
+                    </p>
+
+
+                    <form action="/inserttodb" method="POST">
+                        <input  type="hidden" name='title' value="<%= it.title%>">
+                        <input type="hidden" name='img' value="<%= it.img%>">
+                        <input type="hidden" name='author' value="<%= it.author%>">
+                        <input type="hidden" name='isbn' value="<%= it.isbn%>">
+                        <input type="hidden" name='description' value="<%= it.description%>">
+                        <button type="submit">Select</button>
+
+                    </form>
+                </div>
+                <% }) %>
+
+
+
+        </main>
+</body>
+
+</html>
